@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/f3ee3979dd.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <style>
+    body {
+      margin: 0%;
+      background-color: rgb(214, 214, 214);
+    }
+    .navbar {
+      background-color: white;
+      display: flex;
+      padding: 2%;
+      align-items: center;
+      justify-content: space-evenly;
+      box-shadow: rgb(21, 18, 18);
+    }
+    .navbar a {
+      color: rgb(39, 39, 39);
+      text-decoration: none;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+    }
+    .logo {
+      font-size: 2rem !important;
+    }
+    .navbar i {
+      float: right;
+      font-size: 1.4rem;
+      font-weight: bold;
+    }
+    .container {
+      background-image: url(https://edge.rode.com//images/page/1/og-image.jpg);
+      background-size: cover;
+      min-height: 100vh;
+    }
+    .input_field {
+      display: flex;
+      align-items: flex-start;
+    }
+  </style>
+  <body>
+    <nav class="navbar">
+      <a class="logo">RODE</a>
+      <a href="">Home</a>
+      <a href="">About</a>
+      <a href="">Contact</a>
+      <a href="">More Info</a>
+      <a href="">Others</a>
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </nav>
+    <form onsubmit="return check()">
+      <input type="text" placeholder="enter your name" id="firstname" />
+      <input type="text" placeholder="enter your email id" id="email" />
+      <input type="number" placeholder="enter your phone number" id="number" />
+      <input type="password" placeholder="Enter your password" id="password" />
+      <input
+        type="password"
+        placeholder="Confirm your password"
+        id="confirmpassword"
+      />
+      <p>
+        <input type="radio" id="male" name="gender" value="male" />Male
+        <input type="radio" id="female" name="gender" value="female" />Female
+      </p>
+
+      <label for="options">State:</label>
+      <select>
+        <option value="AP">Andhra Pradesh</option>
+        <option value="AR">Arunachal Pradesh</option>
+        <option value="AS">Assam</option>
+        <option value="BR">Bihar</option>
+        <option value="CT">Chhattisgarh</option>
+        <option value="GA">Gujarat</option>
+        <option value="HR">Haryana</option>
+        <option value="HP">Himachal Pradesh</option>
+        <option value="JK">Jammu and Kashmir</option>
+        <option value="GA">Goa</option>
+        <option value="JH">Jharkhand</option>
+        <option value="KA">Karnataka</option>
+        <option value="KL">Kerala</option>
+        <option value="MP">Madhya Pradesh</option>
+        <option value="MH">Maharashtra</option>
+        <option value="MN">Manipur</option>
+        <option value="ML">Meghalaya</option>
+        <option value="MZ">Mizoram</option>
+        <option value="NL">Nagaland</option>
+        <option value="OR">Odisha</option>
+        <option value="PB">Punjab</option>
+        <option value="RJ">Rajasthan</option>
+        <option value="SK">Sikkim</option>
+        <option value="TN">Tamil Nadu</option>
+        <option value="TG">Telangana</option>
+        <option value="TR">Tripura</option>
+        <option value="UT">Uttarakhand</option>
+        <option value="UP">Uttar Pradesh</option>
+        <option value="WB">West Bengal</option>
+        <option value="AN">Andaman and Nicobar Islands</option>
+        <option value="CH">Chandigarh</option>
+        <option value="DN">Dadra and Nagar Haveli</option>
+        <option value="DD">Daman and Diu</option>
+        <option value="DL">Delhi</option>
+        <option value="LD">Lakshadweep</option>
+        <option value="PY">Puducherry</option>
+      </select>
+
+      <button>Submit</button><br />
+    </form>
+    <script>
+      function check() {
+        var firstName = document.getElementById("firstname").value;
+        var firstNameCheck = /^[a-zA-Z]+$/;
+        var emailID = document.getElementById("email").value;
+        var emailCheck = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]{2,3}$/;
+        var phnNumber = document.getElementById("number").value;
+        var male = document.getElementById("male").checked;
+        var female = document.getElementById("female").checked;
+        var password = document.getElementById("password");
+        var confirmPassword = document.getElementById("confirmpassword");
+        var gender;
+        if (male == true) {
+          gender = "male";
+        } else if (female == true) {
+          gender = "female";
+        } else {
+          gender = null;
+          alert("Select a gender");
+        }
+        console.log(firstName, gender);
+
+        if (firstName == " " || firstName.length < 3) {
+          alert("Please enter the first name");
+          return false;
+        }
+        if (!firstName.match(firstNameCheck)) {
+          alert("Name must carry charcters");
+          return false;
+        }
+
+        if (!emailID.match(emailCheck)) {
+          alert("Email id should be of correct format");
+          return false;
+        }
+        if (phnNumber.length > 10 || phnNumber.length < 10) {
+          alert("Pls enter phone number properly");
+          return false;
+        }
+        if (password == " " || password.length < 10) {
+          alert("Enter the password correctly");
+          return false;
+        }
+        if (!password.match(firstNameCheck)) {
+          alert("Password must contain special characters and numbers");
+          return false;
+        }
+        if (password != confirmPassword) {
+          alert("Password doesn't match");
+          return false;
+        }
+        return true;
+      }
+    </script>
+  </body>
+</html>
